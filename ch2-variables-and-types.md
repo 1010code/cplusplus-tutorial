@@ -100,3 +100,63 @@ int main () {
 > gcc xxx.cpp -std=c++11
 
 ## Type deduction: auto and decltype
+當一個新變數被初始化時，編譯器可以通過初始化器自動找出變數的類型。可以使用 auto 作為變數的類型說明。以下範例 bar 被宣告為具有 auto 類型;在本例中，bar 使用 foo 的類型，即 int。
+
+```c
+int foo = 0;
+auto bar = foo;  // the same as: int bar = foo;
+```
+
+未初始化的變數也可以使用 decltype 進行類型推斷。
+```c
+int foo = 0;
+decltype(foo) bar;  // the same as: int bar;
+```
+
+## Introduction to strings
+基本類型表示程式碼在運行的機器所處理的最基本類型。但是 c++ 語言的一個主要優點是它豐富的複合類型集，其中的基本類型僅僅是構建塊。複合類型的一個例子是 string 類型。這種類型的變數能夠存儲字串，如單詞或句子。一個非常有用的特性!
+
+```c
+ 
+// my first string
+#include <iostream>
+#include <string>
+using namespace std;
+int main () {
+  string mystring;
+  mystring = "This is a string";
+  cout << mystring;
+  return 0;
+}
+```
+
+此外字串型態也可以使用以下三種方法被初始化：
+```c
+string mystring = "This is a string";
+string mystring ("This is a string");
+string mystring {"This is a string"};
+```
+
+字串也可以執行基本數據類型可以執行的所有其他基本操作，比如在宣告時沒有初始值，並在執行過程中更改其值:
+
+```c
+// my first string
+#include <iostream>
+#include <string>
+using namespace std;
+int main () {
+  string mystring;
+  mystring = "This is the initial string content";
+  cout << mystring << endl;
+  mystring = "This is a different string content";
+  cout << mystring << endl;
+  return 0;
+}
+```
+
+> 注意:插入 endl 是在結尾處會進行換行。
+
+string 類是複合類型。正如你在上面的例子中所看到的，複合類型的使用方式與基本類型相同:使用相同的語法來聲明變數和初始化它們。
+
+
+有關標準 c++ 字串的更多細節，請參閱 [string](https://cplusplus.com/reference/string/string/)。
