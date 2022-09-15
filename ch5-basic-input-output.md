@@ -122,6 +122,8 @@ int myint;
 stringstream(mystr) >> myint;
 ```
 
+在這個例子中，我們間接地從標準輸入中獲取數值:我們不是直接從 cin 中提取數值，而是從 cin 中提取行到一個字串對象到(mystr)中，然後從這個字串中提取值到變數 price 和quantity 中。一旦這些值是數值，就可以對它們執行算術運算，例如將它們相乘以獲得總價。
+
 ```c
 // stringstreams
 #include <iostream>
