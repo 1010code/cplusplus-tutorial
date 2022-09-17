@@ -56,3 +56,152 @@ int n = 10;
   cout << "liftoff!\n";
 }
 ```
+
+當 while 判斷為真，則會執行該區塊內的程式。如果在任何語句執行後，表達式不再為真，則迴圈將結束。
+
+### The do-while loop
+do-while 迴圈與剛剛的 while 類似。差別在於 do-while 確保會進入區塊內執行一次，接著再判斷是否結束迴圈。
+
+```c
+// echo machine
+#include <iostream>
+#include <string>
+using namespace std;
+int main () {
+  string str;
+  do {
+    cout << "Enter text: ";
+    getline (cin,str);
+    cout << "You entered: " << str << '\n';
+  } while (str != "goodbye");
+}
+```
+
+當語句需要至少執行一次時，例如當檢查迴圈結束的條件是在迴圈語句本身內確定時，通常首選do-while 迴圈而不 是 while 迴圈。在前面的例子中，區塊中的輸入將決定迴圈是否結束。因此，即使用戶想透過輸入 goodbye 來盡快結束迴圈，迴圈中的塊也需要至少執行一次，以提示輸入，而條件實際上只能在執行之後才能確定。
+
+### The for loop
+for 迴圈是最常見通用的方法，以下範例透過 for 迴圈執行十次。
+
+```c
+// countdown using a for loop
+#include <iostream>
+using namespace std;
+int main () {
+  for (int n=10; n>0; n--) {
+    cout << n << ", ";
+}
+  cout << "liftoff!\n";
+}
+```
+
+### Range-based for loop
+for 迴圈還有另一種用法，用於 range 取值，以下範例將一個字串透過迴圈逐一取得字元。
+
+```c
+// range-based for loop
+#include <iostream>
+#include <string>
+using namespace std;
+int main () {
+  string str {"Hello!"};
+  for (char c : str)
+  {
+    cout << "[" << c << "]";
+  }
+  cout << '\n';
+}
+```
+
+基於範圍的迴圈通常也會使用 auto 來推斷元素的類型。通常，上面範例也可以寫成:
+
+```c
+for (auto c : str)
+  cout << "[" << c << "]";
+```
+
+## Jump statements
+跳躍陳述式允後執行到特定位置的跳轉來改變程式的流程。
+
+### The break statement
+break 出現在迴圈中，可以直接中斷跳出迴圈並終止結束。例如，讓我們在它自然結束前停止倒計時:
+
+```c
+// break loop example
+#include <iostream>
+using namespace std;
+int main () {
+  for (int n=10; n>0; n--)
+  {
+    cout << n << ", ";
+    if (n==3)
+    {
+      cout << "countdown aborted!";
+      break; 
+    }
+  } 
+}
+```
+
+## The continue statement
+continue 會直接跳過當下迴圈的內容，並且直接重新進入迴圈的下一回合。
+
+```c
+// continue loop example
+#include <iostream>
+using namespace std;
+int main () {
+  for (int n=10; n>0; n--) {
+    if (n==5) continue;
+    cout << n << ", ";
+}
+  cout << "liftoff!\n";
+}
+```
+
+## The goto statement
+goto 允許程式執行到某行突然跳到某個區段。
+
+```c
+// goto loop example
+#include <iostream>
+using namespace std;
+int main () {
+  int n=10;
+mylabel:
+  cout << n << ", ";
+  n--;
+  if (n>0) goto mylabel;
+  cout << "liftoff!\n";
+}
+```
+
+
+## Another selection statement: switch.
+switch 方法有點類似於 if...else。
+
+```c
+switch (x) {
+  case 1:
+    cout << "x is 1";
+    break;
+  case 2:
+    cout << "x is 2";
+    break;
+  default:
+    cout << "value of x unknown";
+  }
+```
+
+等同於
+
+```c
+if (x == 1) {
+  cout << "x is 1";
+}
+else if (x == 2) {
+  cout << "x is 2";
+}
+else {
+  cout << "value of x unknown";
+}
+```

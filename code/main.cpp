@@ -1,7 +1,11 @@
+// goto loop example
 #include <iostream>
-#include <string>
 using namespace std;
-
-int main(){
-  string s= L"jhkj";
+int main () {
+  int n=10;
+mylabel:
+  cout << n << ", ";
+  n--;
+  if (n>0) goto mylabel;
+  cout << "liftoff!\n";
 }
