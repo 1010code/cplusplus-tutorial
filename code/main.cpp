@@ -1,11 +1,20 @@
-// goto loop example
 #include <iostream>
 using namespace std;
+namespace first
+{
+  int x = 5;
+  int y = 10; 
+}
+namespace second
+{
+  double x = 3.1416;
+  double y = 2.7183;
+}
 int main () {
-  int n=10;
-mylabel:
-  cout << n << ", ";
-  n--;
-  if (n>0) goto mylabel;
-  cout << "liftoff!\n";
+  using namespace first;
+  cout << x << '\n';
+  cout << y << '\n';
+  cout << second::x << '\n';
+  cout << second::y << '\n';
+  return 0; 
 }
