@@ -309,3 +309,7 @@ int * q = nullptr;
 
 ## Pointers to functions
 指針函數
+
+
+
+
